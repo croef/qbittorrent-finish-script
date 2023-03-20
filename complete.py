@@ -26,14 +26,15 @@ def move_file(ori, des):
 
 def move_path(ori, des):
     desPath = os.path.join(des, os.path.basename(ori))
-    if os.path.exists(desPath):
+    if not os.path.exists(desPath):
         mkdir(desPath)
     for x in os.listdir(ori):
         oriPath = os.path.join(ori, x)
         if os.path.isdir(oriPath):
-            move_path(oriPath, os.path.join(desPath, x))
+            move_path(oriPath, desPath)
             continue
         if tool.is_same_file_in_path(oriPath, desPath):
+            print('file exist, skip: {}'.format(oriPath))
             continue
         move_file(oriPath, desPath)
              
