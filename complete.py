@@ -63,7 +63,7 @@ def identify_type(contentPath, rootPath):
 def main(contentPath, rootPath):
     if is_skip_path(contentPath) or is_skip_path(rootPath):
         return
-    desPath = os.path.join(identify_type(contentPath, contentPath))
+    desPath = os.path.join(DES_PATH, identify_type(contentPath, rootPath))
     if tool.is_empty(rootPath):
         move_file(contentPath, desPath)
         return
